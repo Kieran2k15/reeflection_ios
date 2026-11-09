@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NavigationView: View {
     
+    let user: RFUser
+    
     var body: some View {
         
         TabView {
@@ -24,10 +26,16 @@ struct NavigationView: View {
                     DiveListView()
                 }
             }
+            
+            Tab("You", systemImage: "person.crop.circle") {
+                NavigationStack {
+                    UserView(user: user)
+                }
+            }
         }
     }
 }
 
 #Preview {
-    NavigationView()
+    NavigationView(user: .preview)
 }

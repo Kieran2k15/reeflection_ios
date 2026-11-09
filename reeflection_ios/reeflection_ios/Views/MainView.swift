@@ -14,8 +14,8 @@ struct MainView: View {
     
     var body: some View {
         
-        if let _ = user {
-            NavigationView()
+        if let user = user {
+            NavigationView(user: user)
         } else {
             LoginView { user in
                 self.user = user
