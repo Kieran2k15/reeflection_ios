@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Reeflection logo: an R whose leg carries on into a dive profile
+       (descent, bottom time, ascent, safety stop) -->
+  <rect width="32" height="32" rx="7" fill="#0b6b7a"/>
+  <g fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M8 7.5 H15 C20 7.5 20 15 15 15 H10 L14 21 L18 23 L21 21.5 L23 17 L25 17 L26.5 12"/>
+    <path d="M8 7.5 V25"/>
+  </g>
+</svg>
