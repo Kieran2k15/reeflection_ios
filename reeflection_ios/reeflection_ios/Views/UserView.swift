@@ -9,15 +9,31 @@ import SwiftUI
 
 struct UserView: View {
     
-    let api = RFAPI()
     let user: RFUser
+    let onSignOut: () -> ()
+    
+    let api = RFAPI()
     
     var body: some View {
         
         VStack {
+            
+            Spacer()
+            
             UserAvatarView(name: user.name, size: 64)
             Text(user.name)
             Text(user.email)
+            
+            Spacer()
+            
+            Button {
+                onSignOut()
+            } label: {
+                Text("Sign out")
+            }
+            
+            Spacer()
+
         }
         .padding(8)
     }

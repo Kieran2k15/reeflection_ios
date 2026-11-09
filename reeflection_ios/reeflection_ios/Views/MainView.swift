@@ -15,12 +15,16 @@ struct MainView: View {
     var body: some View {
         
         if let user = user {
-            NavigationView(user: user)
+            NavigationView(user: user, onSignOut: onSignOut)
         } else {
             LoginView { user in
                 self.user = user
             }
         }
+    }
+    
+    func onSignOut() {
+        self.user = nil
     }
 }
 

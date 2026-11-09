@@ -10,6 +10,7 @@ import SwiftUI
 struct NavigationView: View {
     
     let user: RFUser
+    let onSignOut: () -> ()
     
     var body: some View {
         
@@ -29,7 +30,7 @@ struct NavigationView: View {
             
             Tab("You", systemImage: "person.crop.circle") {
                 NavigationStack {
-                    UserView(user: user)
+                    UserView(user: user, onSignOut: onSignOut)
                 }
             }
         }
@@ -37,5 +38,7 @@ struct NavigationView: View {
 }
 
 #Preview {
-    NavigationView(user: .preview)
+    NavigationView(user: .preview) {
+        
+    }
 }
