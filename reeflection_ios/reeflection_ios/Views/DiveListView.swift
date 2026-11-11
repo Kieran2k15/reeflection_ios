@@ -11,21 +11,33 @@ struct DiveListView: View {
     
     let api: RFAPI = RFAPI()
     
-    @State private var diveList: [Dive] = []
+    @State private var diveList: [Dive]
     @State private var errorMessage: String?
+
+    init(diveList: [Dive] = []) {
+        _diveList = State(initialValue: diveList)
+    }
     
     var body: some View {
         
-        List(diveList) { dive in
-            NavigationLink {
-                DiveView(diveID: dive.id)
-            } label: {
-                Text(dive.id)
-            }
+        NavigationStack {
+            
+            List(diveList) { dive in
+                
+                NavigationLink {
+                    DiveView(diveID: dive.id)
+                } label: {
+                    HStack {
+                        Text(dive.startTimeLocalText)
+                        Spacer()
+                        Text("\(dive.maxDepthMeters, specifier: "%.1f") m")
+                    }
+                }
 
-        }
-        .task {
-            await updateList()
+            }
+            .task {
+                await updateList()
+            }
         }
     }
     
@@ -37,4 +49,8 @@ struct DiveListView: View {
             
         }
     }
+}
+
+#Preview {
+    DiveListView(diveList: Dive.preview)
 }

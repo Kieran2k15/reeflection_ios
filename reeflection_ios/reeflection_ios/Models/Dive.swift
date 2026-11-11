@@ -66,7 +66,20 @@ nonisolated struct Dive: Decodable, Identifiable, Hashable, Sendable {
         startTimeLocal.formatted(Date.FormatStyle(date: .abbreviated, time: .shortened, timeZone: .gmt))
     }
 
+    var startDateText: String {
+        startTimeLocal.formatted(Date.FormatStyle(date: .abbreviated, time: .omitted, timeZone: .gmt))
+    }
+
+    var startClockText: String {
+        startTimeLocal.formatted(Date.FormatStyle(date: .omitted, time: .shortened, timeZone: .gmt))
+    }
+
     var durationMinutes: Int {
-        durationSeconds / 60
+        Int((Double(durationSeconds) / 60).rounded())
+    }
+
+    var averageDepthMeters: Double? {
+        guard !samples.isEmpty else { return nil }
+        return samples.reduce(0) { $0 + $1.depthMeters } / Double(samples.count)
     }
 }

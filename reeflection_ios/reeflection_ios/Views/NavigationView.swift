@@ -23,9 +23,7 @@ struct NavigationView: View {
             }
 
             Tab("Dives", systemImage: "list.bullet") {
-                NavigationStack {
-                    DiveListView()
-                }
+                DiveListView()
             }
             
             Tab("You", systemImage: "person.crop.circle") {
