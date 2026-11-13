@@ -26,10 +26,11 @@ struct DiveView: View {
             if let dive {
                 
                 VStack(alignment: .leading) {
+                    
                     Text(dive.startDateText)
                         .font(.title)
                     
-                    Text("\(dive.startClockText) · \(dive.filename)")
+                    Text(dive.startClockText)
                         .font(.headline)
                         .foregroundStyle(.secondary)
                 }
@@ -37,6 +38,7 @@ struct DiveView: View {
                 .padding([.horizontal, .top])
                 
                 DiveSummaryGridView(dive: dive)
+                
                 DiveChartView(dive: dive)
                 
             } else {

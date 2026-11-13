@@ -49,3 +49,7 @@ nonisolated struct TankPressure: Decodable, Hashable, Sendable {
         case pressureBar = "pressure_bar"
     }
 }
+
+extension Sample {
+    nonisolated var minutes: Double { Double(seconds) / 60 }
+}
